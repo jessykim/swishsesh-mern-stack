@@ -4,9 +4,9 @@ const Landing = () => {
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>
-        Emaily!
+        Welcome to Swishsesh
       </h1>
-      Collect feedback from your users
+      Sign up for a run
     </div>
   )
 }
