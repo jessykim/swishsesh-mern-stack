@@ -41,31 +41,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const PORT = process.env.PORT || 8080
-
-// mongoose.connect(
-//   keys.mongoURI,
-//   (err) => {
-//     if (err) {
-//       console.error('DB: fail')
-//       console.error(err.message)
-//       process.exit(1)
-//     }
-//     console.log('DB: connected')
-//   }
-
-// )
-  
-  app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`)
-  })
-// process.on('SIGINT', function() {
-//   console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" );
-//   server.close(() => {
-//     console.log('Http server closed.')
-//     mongoose.connection.close(false, () => {
-//       console.log('MongoDb connection closed.')
-//       process.exit(0)
-//     })
-//   });
-
-// })
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`)
+})

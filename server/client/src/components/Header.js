@@ -16,7 +16,7 @@ class Header extends Component {
       default:
         return (
           <>
-            <li><a href="/players">Players</a></li>
+            <li><a href="/api/profiles">Players</a></li>
             <li><a href="/runs/new">Add a Run</a></li>
             <li><a href="/runs">Join a Run</a></li>
             <li><a href="/api/logout">Logout</a></li>

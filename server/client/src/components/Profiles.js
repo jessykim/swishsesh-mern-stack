@@ -1,15 +1,15 @@
 import React from 'react'
-import PlayersList from './Players/PlayersList'
+import ProfilesList from './Profiles/ProfilesList'
 
-const Players = () => {
+const Profiles = () => {
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>
         Players
       </h1>
-      <PlayersList />
+      <ProfilesList />
     </div>
   )
 }
 
-export default Players
+export default Profiles

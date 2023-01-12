@@ -7,7 +7,7 @@ import Header from './Header'
 import Landing from './Landing'
 import Runs from './Runs'
 import AddRun from './AddRun'
-import Players from './Players'
+import Profiles from './Profiles'
 
 class App extends Component {
   componentDidMount() {
@@ -23,7 +23,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/runs" component={Runs} />
             <Route path="/runs/new" component={AddRun} />
-            <Route path="/players" component={Players} />
+            <Route path="/api/profiles" component={Profiles} />
           </div>
         </BrowserRouter>
       </div>
