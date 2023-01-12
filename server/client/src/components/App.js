@@ -5,8 +5,8 @@ import * as actions from '../actions'
 
 import Header from './Header'
 import Landing from './Landing'
-import Runs from './Runs'
-import AddRun from './AddRun'
+import RunsList from './Runs/RunsList'
+import AddRun from './Runs/AddRun'
 import Profiles from './Profiles'
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
           <div>
             <Header />
             <Route exact path="/" component={Landing} />
-            <Route exact path="/runs" component={Runs} />
+            <Route exact path="/runs" component={RunsList} />
             <Route path="/runs/new" component={AddRun} />
             <Route path="/profiles" component={Profiles} />
           </div>

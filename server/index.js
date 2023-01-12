@@ -12,14 +12,15 @@ const keys = require('./config/keys');
 
 // mongoose.Promise = global.Promise
 mongoose.connect(
-  keys.mongoURI,
-  (err) => {
-    if (err) {
-      return console.log(err)
-    }
-    console.log('connected to mongodb successfully!')
-  }
+  keys.mongoURI
 )
+
+const db = mongoose.connection
+
+// database connection event
+db.on('connected', function() {
+  console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`)
+})
 
 const app = express()
 

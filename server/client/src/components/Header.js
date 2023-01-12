@@ -28,14 +28,13 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div>
           <Link 
             to={'/'} 
-            className="left brand-logo"
           >
             Swishsesh
           </Link>
-          <ul className="right">
+          <ul>
             {this.renderContent()}
           </ul>
         </div>

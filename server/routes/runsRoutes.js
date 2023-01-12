@@ -4,8 +4,15 @@ const requireLogin = require('../middlewares/requireLogin')
 const Run = mongoose.model('Run')
 
 module.exports = app => {
-  app.post('/api/runs', requireLogin, (req, res) => {
-    const { date, location, duration , cost, gameFormat, host } = req.body
+  app.get('/api/runs', requireLogin, (req, res) => {
+    Run.find({})
+    .then(runs => {
+      res.send(runs)
+    })
+  })
+
+  app.post('/api/runs', requireLogin, async (req, res) => {
+    const { date, location, duration , cost, gameFormat } = req.body
 
     const run = new Run({
       date,
@@ -13,7 +20,15 @@ module.exports = app => {
       duration,
       cost,
       gameFormat,
-      host
+      host: req.user.profile.id
     })
+
+    try {
+      const newRun = await run.save()
+      res.send(newRun)
+    } catch (err) {
+      res.status(422).send(err)
+    }
   })
+
 }
