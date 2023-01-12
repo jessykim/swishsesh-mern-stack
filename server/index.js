@@ -10,8 +10,16 @@ require('./services/passport');
 
 const keys = require('./config/keys');
 
-mongoose.Promise = global.Promise
-mongoose.connect(keys.mongoURI)
+// mongoose.Promise = global.Promise
+mongoose.connect(
+  keys.mongoURI,
+  (err) => {
+    if (err) {
+      return console.log(err)
+    }
+    console.log('connected to mongodb successfully!')
+  }
+)
 
 const app = express()
 

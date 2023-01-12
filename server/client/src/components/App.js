@@ -23,7 +23,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/runs" component={Runs} />
             <Route path="/runs/new" component={AddRun} />
-            <Route path="/api/profiles" component={Profiles} />
+            <Route path="/profiles" component={Profiles} />
           </div>
         </BrowserRouter>
       </div>
