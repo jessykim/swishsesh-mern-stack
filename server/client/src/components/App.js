@@ -5,8 +5,8 @@ import * as actions from '../actions'
 
 import Header from './Header'
 import Landing from './Landing'
-const Dashboard = () => <h2>Dashboard</h2>
-const RunNew = () => <h2>RunNew</h2>
+import Runs from './Runs'
+import AddRun from './AddRun'
 
 class App extends Component {
   componentDidMount() {
@@ -20,8 +20,8 @@ class App extends Component {
           <div>
             <Header />
             <Route exact path="/" component={Landing} />
-            <Route exact path="/runs" component={Dashboard} />
-            <Route path="/runs/new" component={RunNew} />
+            <Route exact path="/runs" component={Runs} />
+            <Route path="/runs/new" component={AddRun} />
           </div>
         </BrowserRouter>
       </div>

@@ -26,4 +26,4 @@ const runSchema = new Schema ({
   timestamps: true
 })
 
-mongoose.model('Run', runSchema)
+mongoose.model('runs', runSchema)

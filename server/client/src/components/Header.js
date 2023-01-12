@@ -12,7 +12,13 @@ class Header extends Component {
           <li><a href="/auth/google">Login With Google</a></li> 
         );
       default:
-        return <li><a href="/api/logout">Logout</a></li>
+        return (
+          <>
+            <li><a href="/runs/new">Add a Run</a></li>
+            <li><a href="/runs">Join a Run</a></li>
+            <li><a href="/api/logout">Logout</a></li>
+          </>
+        )
     }
   }
 
@@ -22,7 +28,7 @@ class Header extends Component {
       <nav>
         <div className="nav-wrapper">
           <Link 
-            to={this.props.auth ? '/runs' : '/' } 
+            to={'/'} 
             className="left brand-logo"
           >
             Swishsesh
