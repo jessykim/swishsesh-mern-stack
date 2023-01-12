@@ -6,7 +6,9 @@ class Header extends Component {
   renderContent() {
     switch (this.props.auth) {
       case null:
-        return;
+        return (
+          <li><a href="/auth/google">Login With Google</a></li> 
+        );
       case false:
         return (
           <li><a href="/auth/google">Login With Google</a></li> 
@@ -14,6 +16,7 @@ class Header extends Component {
       default:
         return (
           <>
+            <li><a href="/players">Players</a></li>
             <li><a href="/runs/new">Add a Run</a></li>
             <li><a href="/runs">Join a Run</a></li>
             <li><a href="/api/logout">Logout</a></li>

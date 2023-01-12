@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const requireLogin = require('../middlewares/requireLogin')
 
-const Run = mongoose.models('runs')
+const Run = require('../models/Run')
 
 module.exports = app => {
   app.post('/api/runs', requireLogin, (req, res) => {

@@ -1,9 +1,10 @@
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const mongoose = require('mongoose');
-const keys = require('../config/keys');
+const passport = require('passport')
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+const mongoose = require('mongoose')
+const keys = require('../config/keys')
 
-const User = mongoose.model('users')
+const User = require('../models/User')
+const Profile = require('../models/Profile')
 
 passport.serializeUser((user, done) => {
   done(null, user.id)
@@ -11,9 +12,13 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   User.findById(id)
-    .then(user => {
-      done(null, user)
-    })
+  .populate('profile', 'name avatar')
+  .then(user => {
+    done(null, user)
+  })
+  .catch(err => {
+    done(err, null)
+  })
 })
 
 passport.use(
@@ -31,8 +36,22 @@ passport.use(
         return done(null, existingUser)
       }
       
-      const user = await new User({ googleId: profile.id }).save()
-      done(null, user)
-  }
+      const newProfile = new Profile({
+        name: profile.displayName,
+        avatar: profile.photos[0].value
+      })
+      const newUser = await new User({ 
+        email: profile.emails[0].value,
+        googleId: profile.id ,
+        profile: newProfile._id
+      })
+      newProfile.save()
+      .then(() => {
+        newUser.save()
+        .then(() => {
+          return(null, newUser)
+        })
+      })
+    }
   )
 )
