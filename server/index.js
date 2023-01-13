@@ -2,25 +2,21 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const keys = require('./config/keys');
 
+// connect to database and handle errors
+mongoose.connect(keys.mongoURI)
+mongoose.Promise = global.Promise
+mongoose.connection.on('error', (err) => {
+  console.error(`${err.message}`)
+})
+
+// import models
 require('./models/User');
 require('./models/Profile');
 require('./models/Run');
+
 require('./services/passport');
-
-const keys = require('./config/keys');
-
-// mongoose.Promise = global.Promise
-mongoose.connect(
-  keys.mongoURI
-)
-
-const db = mongoose.connection
-
-// database connection event
-db.on('connected', function() {
-  console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`)
-})
 
 const app = express()
 

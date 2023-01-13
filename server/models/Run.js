@@ -20,10 +20,10 @@ const runSchema = new Schema ({
     required: true
   },
   gameFormat: String,
-  host: { type: Schema.Types.ObjectId, ref: 'Profile'},
-  players: [{ type: Schema.Types.ObjectId, ref: 'Profile' }]
+  host: { type: Schema.Types.ObjectId, ref: 'profiles'},
+  players: [{ type: Schema.Types.ObjectId, ref: 'profiles' }]
 }, {
   timestamps: true
 })
 
-mongoose.model('Run', runSchema)
+mongoose.model('runs', runSchema)

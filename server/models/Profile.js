@@ -17,4 +17,4 @@ const profileSchema = new Schema ({
   timestamps: true
 })
 
-mongoose.model('Profile', profileSchema)
+mongoose.model('profiles', profileSchema)
