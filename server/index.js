@@ -5,7 +5,11 @@ const passport = require('passport');
 const keys = require('./config/keys');
 
 // connect to database and handle errors
-mongoose.connect(keys.mongoURI)
+mongoose.set('strictQuery', false)
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
 mongoose.Promise = global.Promise
 mongoose.connection.on('error', (err) => {
   console.error(`${err.message}`)
