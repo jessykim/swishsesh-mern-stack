@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose
 
 const runSchema = new Schema ({
-  date: {
+  start: {
+    type: Date,
+    required: true
+  },
+  end: {
     type: Date,
     required: true
   },
@@ -11,11 +15,15 @@ const runSchema = new Schema ({
     type: String,
     required: true
   },
-  duration: {
-    type: Number,
+  address: {
+    type: String,
     required: true
   },
   cost: {
+    type: Number,
+    required: true
+  },
+  spots: {
     type: Number,
     required: true
   },
