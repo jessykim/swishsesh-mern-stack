@@ -1,34 +1,46 @@
 // RunForm shows a form for a user to add input
-import _ from 'lodash';
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
-import RunField from './RunField';
-import formFields from './formFields';
 
 class RunForm extends Component {
-  renderFields() {
-    return _.map(formFields, ({ label, name }) => {
-      return (
-        <Field
-          key={name}
-          component={RunField}
-          type="text"
-          label={label}
-          name={name}
-        />
-      );
-    });
-  }
-
   render() {
     return (
       <div>
         <form onSubmit={this.props.handleSubmit(this.props.onRunSubmit)}>
-          {this.renderFields()}
-          <Link to="/runs">
-            Cancel
-          </Link>
+          <div>
+            <label>Start</label>
+            <input type="datetime-local"></input>
+          </div>
+          <div>
+            <label>End</label>
+            <input type="datetime-local"></input>
+          </div>
+          <div>
+            <label>Location</label>
+            <input type="text"></input>
+          </div>
+          <div>
+            <label>Address</label>
+            <input type="text"></input>
+          </div>
+          <div>
+            <label>Cost (per person)</label>
+            <input type="number" min="0"></input>
+          </div>
+          <div>
+            <label>Spots</label>
+            <input type="number" min="0"></input>
+          </div>
+          <div>
+            <label>Game Format</label>
+            <input type="text" placeholder="Optional"></input>
+          </div>
+          <button>
+            <Link to="/runs">
+              Cancel
+            </Link>
+          </button>
           <button type="submit">
             Submit
           </button>
@@ -38,22 +50,7 @@ class RunForm extends Component {
   }
 }
 
-// function validate(values) {
-//   const errors = {};
-
-//   errors.recipients = validateEmails(values.recipients || '');
-
-//   _.each(formFields, ({ name }) => {
-//     if (!values[name]) {
-//       errors[name] = 'You must provide a value';
-//     }
-//   });
-
-//   return errors;
-// }
-
 export default reduxForm({
-  // validate,
   form: 'runForm',
   destroyOnUnmount: false
 })(RunForm);
