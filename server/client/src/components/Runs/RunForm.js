@@ -42,7 +42,7 @@ class RunForm extends Component {
             </Link>
           </button>
           <button type="submit">
-            Submit
+            Next
           </button>
         </form>
       </div>

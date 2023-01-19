@@ -12,13 +12,15 @@ module.exports = app => {
   })
 
   app.post('/api/runs', requireLogin, async (req, res) => {
-    const { date, location, duration , cost, gameFormat } = req.body
+    const { start, end, location, address, cost, spots, gameFormat } = req.body
 
     const run = new Run({
-      date,
+      start,
+      end,
       location,
-      duration,
+      address,
       cost,
+      spots,
       gameFormat,
       host: req.user.profile.id
     })

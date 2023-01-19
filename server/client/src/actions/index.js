@@ -14,6 +14,7 @@ export const fetchProfiles = () => async dispatch => {
 
 export const submitRun = (values, history) => async dispatch => {
   const res = await axios.post('/api/runs', values);
+  console.log(values)
 
   history.push('/runs');
   dispatch({ type: FETCH_USER, payload: res.data });

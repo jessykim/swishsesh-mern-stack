@@ -8,26 +8,10 @@ class AddRun extends Component {
   state = { showRunReview: false };
 
   renderContent() {
-    if (this.state.showRunReview) {
-      return (
-        <RunFormReview
-          onCancel={() => this.setState({ showRuneview: false })}
-        />
-      );
+    if (this.state.showRunReview === true) {
+      return <RunFormReview onCancel={() => this.setState({ showRunReview: false })} />
     }
-
-    return (
-      <>
-        <div style={{ textAlign: 'center' }}>
-          <h1>
-            Create a Run
-          </h1>
-        </div>
-        <RunForm
-          onRunSubmit={() => this.setState({ showRunReview: true })}
-        />
-      </>
-    );
+    return <RunForm onRunSubmit={() => this.setState({ showRunReview: true })} />
   }
 
   render() {
