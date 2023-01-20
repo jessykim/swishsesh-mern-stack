@@ -5,7 +5,7 @@ import RunForm from './RunForm';
 import RunFormReview from './RunFormReview';
 
 class AddRun extends Component {
-  state = { showRunReview: false };
+  state = { showRunReview: false }
 
   renderContent() {
     if (this.state.showRunReview === true) {

@@ -13,6 +13,7 @@ module.exports = app => {
 
   app.post('/api/runs', requireLogin, async (req, res) => {
     const { start, end, location, address, cost, spots, gameFormat } = req.body
+    console.log(req.body)
 
     const run = new Run({
       start,
@@ -24,6 +25,7 @@ module.exports = app => {
       gameFormat,
       host: req.user.profile.id
     })
+    console.log(run)
 
     try {
       const newRun = await run.save()

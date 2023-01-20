@@ -1,7 +1,8 @@
 // RunForm shows a form for a user to add input
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
+// import RunField from './RunField';
 
 class RunForm extends Component {
   render() {
@@ -9,32 +10,32 @@ class RunForm extends Component {
       <div>
         <form onSubmit={this.props.handleSubmit(this.props.onRunSubmit)}>
           <div>
-            <label>Start</label>
-            <input type="datetime-local"></input>
+            <label htmlFor="start">Start</label>
+            <Field name="start" component="input" type="datetime-local" />
           </div>
           <div>
-            <label>End</label>
-            <input type="datetime-local"></input>
+            <label htmlFor="end">End</label>
+            <Field name="end" component="input" type="datetime-local" />
           </div>
           <div>
-            <label>Location</label>
-            <input type="text"></input>
+            <label htmlFor="location">Location</label>
+            <Field name="location" component="input" type="text" />
           </div>
           <div>
-            <label>Address</label>
-            <input type="text"></input>
+            <label htmlFor="address">Address</label>
+            <Field name="address" component="input" type="text" />
           </div>
           <div>
-            <label>Cost (per person)</label>
-            <input type="number" min="0"></input>
+            <label htmlFor="cost">Cost (per person)</label>
+            <Field name="cost" component="input" type="number" />
           </div>
           <div>
-            <label>Spots</label>
-            <input type="number" min="0"></input>
+            <label htmlFor="spots">Spots</label>
+            <Field name="spots" component="input" type="number" />
           </div>
           <div>
-            <label>Game Format</label>
-            <input type="text" placeholder="Optional"></input>
+            <label htmlFor="gameFormat">Game Format</label>
+            <Field name="gameFormat" component="input" type="text" />
           </div>
           <button>
             <Link to="/runs">

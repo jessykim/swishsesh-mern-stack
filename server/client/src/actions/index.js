@@ -8,7 +8,6 @@ export const fetchUser = () => async dispatch => {
 
 export const fetchProfiles = () => async dispatch => {
   const res = await axios.get('/api/profiles')
-  console.log(res.data)
   dispatch({ type: FETCH_PROFILES, payload: res.data })
 };
 
