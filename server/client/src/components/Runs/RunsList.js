@@ -1,14 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchRuns } from '../../actions'
 
-const RunsList = () => {
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>
-        Join a Run
-      </h1>
-      Sign up for a run
-    </div>
-  )
+class RunsList extends Component {
+  componentDidMount() {
+    this.props.fetchRuns()
+  }
+
+  renderRuns() {
+    return this.props.runs.map(run => {
+      console.log(run)
+      return (
+        <div key={run._id}>
+          {run.location}
+        </div>
+      )
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderRuns()}
+      </div>
+    )
+  }
 }
 
-export default RunsList
+function mapStateToProps({ runs }) {
+  return { runs }
+}
+
+export default connect(mapStateToProps, { fetchRuns })(RunsList)

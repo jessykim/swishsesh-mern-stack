@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { fetchProfiles } from '../../actions';
 
 class ProfilesList extends Component {
-
   componentDidMount() {
-    console.log(this.props)
+    // console.log(this.props)
     this.props.fetchProfiles();
   }
 
@@ -29,7 +28,7 @@ class ProfilesList extends Component {
   }
 }
 
-function mapStateToProps({ profiles}) {
+function mapStateToProps({ profiles }) {
   return { profiles };
 }
 
