@@ -11,6 +11,17 @@ module.exports = app => {
     })
   })
 
+  app.get('/api/runs/:runId', requireLogin, (req, res) => {
+    // console.log(req.params.runId, "PARAMS ID")
+    Run.findById(req.params.runId)
+    .populate('host')
+    .populate('players')
+    .then(run => {
+      // console.log(run, "THIS RUN")
+      res.send(run)
+    })
+  })
+
   app.post('/api/runs', requireLogin, async (req, res) => {
     const { start, end, location, address, cost, spots, gameFormat } = req.body
 

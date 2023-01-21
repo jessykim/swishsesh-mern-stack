@@ -29,9 +29,7 @@ class Header extends Component {
     return (
       <nav>
         <div>
-          <Link 
-            to={'/'} 
-          >
+          <Link to={'/'}>
             Swishsesh
           </Link>
           <ul>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchRuns } from '../../actions'
+import { Link } from 'react-router-dom'
 
 class RunsList extends Component {
   componentDidMount() {
@@ -8,12 +9,16 @@ class RunsList extends Component {
   }
 
   renderRuns() {
-    return this.props.runs.map(run => {
-      console.log(run)
+    return this.props.runsArr.map(run => {
       return (
-        <div key={run._id}>
-          {run.location}
-        </div>
+        <button key={run._id}>
+          <Link to={`/runs/${run._id}`}>
+            {run.location}
+            {run.address}
+            {run.start}
+            {run.spots}
+          </Link>
+        </button>
       )
     })
   }
@@ -21,6 +26,7 @@ class RunsList extends Component {
   render() {
     return (
       <div>
+        <h1>List of Runs</h1>
         {this.renderRuns()}
       </div>
     )
@@ -28,7 +34,9 @@ class RunsList extends Component {
 }
 
 function mapStateToProps({ runs }) {
-  return { runs }
+  // console.log(runs, 'RUNS')
+  const runsArr = Array.from(runs)
+  return { runsArr }
 }
 
 export default connect(mapStateToProps, { fetchRuns })(RunsList)

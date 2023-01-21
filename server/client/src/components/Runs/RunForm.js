@@ -8,6 +8,7 @@ class RunForm extends Component {
   render() {
     return (
       <div>
+        <h1>Schedule a Run</h1>
         <form onSubmit={this.props.handleSubmit(this.props.onRunSubmit)}>
           <div>
             <label htmlFor="start">Start</label>

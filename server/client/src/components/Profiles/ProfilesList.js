@@ -10,7 +10,7 @@ class ProfilesList extends Component {
 
   renderProfiles() {
     return this.props.profiles.map(profile => {
-      console.log(profile)
+      // console.log(profile)
       return (
         <div key={profile._id}>
           {profile.name}
@@ -29,6 +29,7 @@ class ProfilesList extends Component {
 }
 
 function mapStateToProps({ profiles }) {
+  console.log(profiles)
   return { profiles };
 }
 
