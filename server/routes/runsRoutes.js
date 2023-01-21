@@ -10,7 +10,7 @@ module.exports = app => {
       res.send(runs)
     })
   })
-
+  
   app.get('/api/runs/:runId', requireLogin, (req, res) => {
     // console.log(req.params.runId, "PARAMS ID")
     Run.findById(req.params.runId)
@@ -21,7 +21,7 @@ module.exports = app => {
       res.send(run)
     })
   })
-
+  
   app.post('/api/runs', requireLogin, async (req, res) => {
     const { start, end, location, address, cost, spots, gameFormat } = req.body
 
@@ -43,4 +43,6 @@ module.exports = app => {
       res.status(422).send(err)
     }
   })
+
+
 }

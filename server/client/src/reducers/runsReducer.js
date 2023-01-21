@@ -6,7 +6,7 @@ export default function(state = [], action) {
     case FETCH_RUNS:
       return action.payload;
       case FETCH_RUN:
-      console.log(action.payload, 'ACTION PAYLOAD')
+      // console.log(action.payload, 'ACTION PAYLOAD')
       return action.payload;
     default:
       return state;

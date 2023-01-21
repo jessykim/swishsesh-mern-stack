@@ -3,15 +3,14 @@ import { connect } from 'react-redux'
 import { fetchRun } from '../../actions'
 
 class RunDetails extends Component {
-  
   componentDidMount() {
-    console.log(this.props.match.params.runId)
+    // console.log(this.props.match.params.runId)
     const runId = this.props.match.params.runId
     this.props.fetchRun(runId)
   }
 
   renderRun() {
-    console.log(this.props.runs, 'PROPS')
+    // console.log(this.props.runs, 'PROPS')
     return (
       <>
         <h1>{this.props.runs.location}</h1>
@@ -30,14 +29,8 @@ class RunDetails extends Component {
   }
 }
 
-// const mapStateToProps = (state, ownProps) => ({
-//   runId: ownProps.match.params.runId,
-//   state:
-//   console.log(ownProps)
-// })
-
 function mapStateToProps({runs}) {
-  console.log(runs, 'RUN')
+  // console.log(runs, 'RUN')
   return { runs }
 }
 
