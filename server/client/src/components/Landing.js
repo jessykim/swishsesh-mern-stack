@@ -10,11 +10,12 @@ const Landing = ({ auth }) => {
         Welcome to Swishsesh
       </h1>
       {auth ? 
-      <Link to="/runs">
-        <button>Join a Run</button>
-      </Link>
+        <Link to="/runs">
+          <button>Join a Run</button>
+        </Link>
       : 
-      <div>Please login to view runs</div>}
+        <div>Please login to view runs</div>
+      }
     </div>
   )
 }

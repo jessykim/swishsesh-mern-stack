@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 
@@ -19,14 +19,14 @@ class App extends Component {
     return (
       <div className="container">
         <BrowserRouter>
-          <div>
-            <Header />
+          <Header />
+          <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/runs" component={RunsList} />
             <Route exact path="/runs/new" component={AddRun} />
             <Route exact path="/runs/:runId" component={RunDetails} />
-            <Route path="/profiles" component={Profiles} />
-          </div>
+            <Route exact path="/profiles" component={Profiles} />
+          </Switch>
         </BrowserRouter>
       </div>
     )
