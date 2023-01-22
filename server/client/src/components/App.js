@@ -9,6 +9,7 @@ import RunsList from './Runs/RunsList'
 import AddRun from './Runs/AddRun'
 import Profiles from './Profiles'
 import RunDetails from './Runs/RunDetails'
+import RunSignup from './Runs/RunSignup'
 
 class App extends Component {
   componentDidMount() {
@@ -25,6 +26,7 @@ class App extends Component {
             <Route exact path="/runs" component={RunsList} />
             <Route exact path="/runs/new" component={AddRun} />
             <Route exact path="/runs/:runId" component={RunDetails} />
+            <Route exact path="/runs/:runId/signup" component={RunSignup} />
             <Route exact path="/profiles" component={Profiles} />
           </Switch>
         </BrowserRouter>

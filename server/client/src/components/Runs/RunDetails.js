@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { fetchRun } from '../../actions'
 
 class RunDetails extends Component {
@@ -46,7 +47,29 @@ class RunDetails extends Component {
         </section>
         <section>
           <h2>Confirmed Players</h2>
-          {/* <div>{runs.players}</div> */}
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Skill</th>
+                <th></th>
+              </tr>
+            </thead>
+            {/* <tbody>
+              {run.players.forEach(player => {
+                <tr>
+                  <td>{player}</td>
+                  <td>{player}</td>
+                  <td>{player}</td>
+                  <td>{player}</td>
+                </tr>
+              })}
+            </tbody> */}
+          </table>
+        </section>
+        <section>
+          <Link to={`/runs/${run._id}/signup`}>Join Run</Link>
         </section>
       </div>
     )
