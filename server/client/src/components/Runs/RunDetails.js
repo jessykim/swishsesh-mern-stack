@@ -34,7 +34,7 @@ class RunDetails extends Component {
           </div>
           <div>
             <div>Spots Filled</div>
-            <div>/{run.spots}</div>
+            <div>{run.players.length} / {run.spots}</div>
           </div>
           <div>
             <div>Game Format</div>
