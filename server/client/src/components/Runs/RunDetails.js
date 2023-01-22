@@ -10,19 +10,49 @@ class RunDetails extends Component {
   }
 
   renderRun() {
-    // console.log(this.props.runs, 'PROPS')
+    console.log(this.props.runs, 'PROPS')
+    const runs = this.props.runs
     return (
-      <>
-        <h1>{this.props.runs.location}</h1>
-        <h3>{this.props.runs.address}</h3>
-      </>
+      <div>
+        <h1>{runs.start}</h1>
+        <section>
+          <div>
+            <div>Location</div>
+            <div>{runs.location}</div>
+            <div>{runs.address}</div>
+          </div>
+          <div>
+            <div>Game Time</div>
+            <div>{runs.start}</div>
+            <div>{runs.end}</div>
+          </div>
+          <div>
+            <div>Cost (per person)</div>
+            <div>{runs.cost}</div>
+          </div>
+          <div>
+            <div>Spots Filled</div>
+            <div>/{runs.spots}</div>
+          </div>
+          <div>
+            <div>Game Format</div>
+            <div>{runs.gameFormat}</div>
+          </div>
+          <div>
+            <div>Host</div>
+            <div>{runs.host.name}</div>
+          </div>
+        </section>
+        <section>
+          {/* <div>{runs.players}</div> */}
+        </section>
+      </div>
     )
   }
 
   render() {
     return (
       <div>
-        <h1>Run Details</h1>
         {this.renderRun()}
       </div>
     )
