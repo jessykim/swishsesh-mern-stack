@@ -7,6 +7,10 @@ module.exports = app => {
   app.get('/api/runs', requireLogin, (req, res) => {
     Run.find({})
     .then(runs => {
+      console.log(runs)
+      runs.sort(function(a, b) {
+        return new Date(a.start) - new Date(b.start)
+      })
       res.send(runs)
     })
   })
