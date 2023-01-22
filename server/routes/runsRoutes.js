@@ -11,7 +11,17 @@ module.exports = app => {
       runs.sort(function(a, b) {
         return new Date(a.start) - new Date(b.start)
       })
-      res.send(runs)
+
+      const updatedRuns = runs.map(run => {
+        const newStart = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short' }).format(run.start)
+        return {
+          _id: run._id,
+          start: newStart,
+          location: run.location,
+          address: run.address
+        }
+      })
+      res.send(updatedRuns)
     })
   })
   
