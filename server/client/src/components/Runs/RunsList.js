@@ -4,8 +4,8 @@ import { fetchRuns } from '../../actions'
 import { Link } from 'react-router-dom'
 
 class RunsList extends Component {
-  componentDidMount() {
-    this.props.fetchRuns()
+  async componentDidMount() {
+    await this.props.fetchRuns()
   }
 
   renderRuns() {

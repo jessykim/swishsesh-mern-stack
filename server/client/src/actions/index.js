@@ -11,22 +11,23 @@ export const fetchProfiles = () => async dispatch => {
   const res = await axios.get('/api/profiles')
   
   dispatch({ type: FETCH_PROFILES, payload: res.data })
-};
+}
+
 export const submitRun = (values, history) => async dispatch => {
   const res = await axios.post('/api/runs', values);
 
   history.push('/runs');
   dispatch({ type: FETCH_USER, payload: res.data });
-};
+}
 
 export const fetchRuns = () => async dispatch => {
   const res = await axios.get('/api/runs')
 
   dispatch({ type: FETCH_RUNS, payload: res.data })
-};
+}
 
 export const fetchRun = (runId) => async dispatch => {
   const res = await axios.get(`/api/runs/${runId}`)
-  
+  console.log(runId)
   dispatch({ type: FETCH_RUN, payload: res.data })
-};
+}
