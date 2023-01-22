@@ -17,7 +17,25 @@ module.exports = app => {
     .populate('players')
     .then(run => {
       // console.log(run.start, "THIS RUN")
-      res.send(run)
+      const newStart = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short' }).format(run.start)
+      // console.log(newStart)
+      const newEnd = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short' }).format(run.end)
+      // console.log(newEnd)
+
+      // console.log(run)
+      const updatedRun = {
+        _id: run._id,
+        start: newStart,
+        end: newEnd,
+        location: run.location,
+        address: run.address,
+        cost: run.cost,
+        spots: run.spots,
+        gameFormat: run.gameFormat,
+        host: run.host,
+        players: run.players
+      }
+      res.send(updatedRun)
     })
   })
   

@@ -12,6 +12,7 @@ class RunDetails extends Component {
   renderRun() {
     console.log(this.props.run, 'PROPS')
     const run = this.props.run
+
     return (
       <div>
         <h1>{run.start}</h1>
