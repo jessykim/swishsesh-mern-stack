@@ -34,6 +34,6 @@ export const fetchRuns = () => async dispatch => {
 
 export const fetchRun = (runId) => async dispatch => {
   const res = await axios.get(`/api/runs/${runId}`)
-  console.log(runId)
+  // console.log(runId)
   dispatch({ type: FETCH_RUN, payload: res.data })
 }

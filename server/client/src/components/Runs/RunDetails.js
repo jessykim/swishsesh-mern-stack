@@ -53,7 +53,7 @@ class RunDetails extends Component {
                 <th>#</th>
                 <th>Name</th>
                 <th>Skill</th>
-                <th></th>
+                <th>Position</th>
               </tr>
             </thead>
             <tbody>
@@ -71,7 +71,12 @@ class RunDetails extends Component {
           </table>
         </section>
         <section>
-          <Link to={`/runs/${run._id}/signup`}>Join Run</Link>
+          <button>
+            <Link to={'/runs'}>Back</Link>
+          </button>
+          <button>
+            <Link to={`/runs/${run._id}/signup`}>Join Run</Link>
+          </button>
         </section>
       </div>
     )
