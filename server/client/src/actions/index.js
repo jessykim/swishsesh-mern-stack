@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FETCH_USER, FETCH_PROFILES, FETCH_RUNS, FETCH_RUN, UPDATE_RUN } from './types'
+import { FETCH_USER, FETCH_PROFILES, FETCH_RUNS, FETCH_RUN } from './types'
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user')
@@ -20,11 +20,10 @@ export const submitRun = (values, history) => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 }
 
-export const signupRun = (runId, history) => async dispatch => {
-  const res = await axios.put('/api/runs');
+export const signupRun = async (runId, history) => {
+  await axios.post(`/api/runs/${runId}/signup`);
 
-  history.push(`/api/runs/${runId}`);
-  dispatch({ type: UPDATE_RUN, payload: res.data });
+  history.push(`/runs/${runId}`);
 }
 
 export const fetchRuns = () => async dispatch => {

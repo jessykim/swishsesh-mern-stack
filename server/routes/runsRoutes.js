@@ -7,7 +7,7 @@ module.exports = app => {
   app.get('/api/runs', requireLogin, (req, res) => {
     Run.find({})
     .then(runs => {
-      console.log(runs)
+      // console.log(runs)
       runs.sort(function(a, b) {
         return new Date(a.start) - new Date(b.start)
       })
@@ -35,7 +35,6 @@ module.exports = app => {
       // console.log(newStart)
       const newEnd = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short' }).format(run.end)
       // console.log(newEnd)
-
       // console.log(run)
       const updatedRun = {
         _id: run._id,
@@ -75,5 +74,24 @@ module.exports = app => {
     }
   })
 
-
+  app.post('/api/runs/:runId/signup', requireLogin, async (req, res) => {
+    Run.findById(req.params.runId)
+    .then((run) => {
+      // console.log(run.id, 'RUNID?!')
+      const runPlayers = run.players
+      const user = req.user.profile._id
+      if (!runPlayers.includes(user)) {
+        run.players.push(req.user.profile._id)
+        run.save()
+        .then(() => {
+          // console.log(run, 'UPDATED RUN')
+          // res.redirect(`/api/runs/${run.id}`)
+          res.send(run)
+        })
+      } else {
+        // res.redirect(`/api/runs/${run.id}`)
+        res.send(run)
+      }
+    })
+  })
 }

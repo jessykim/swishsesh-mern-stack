@@ -5,13 +5,13 @@ import { fetchRun } from '../../actions'
 
 class RunDetails extends Component {
   componentDidMount() {
-    console.log(this.props.match.params.runId, 'RUN ID')
+    // console.log(this.props.match.params.runId, 'RUN ID')
     const runId = this.props.match.params.runId
     this.props.fetchRun(runId)
   }
 
   renderRun() {
-    console.log(this.props.run, 'PROPS')
+    // console.log(this.props.run, 'PROPS')
     const run = this.props.run
 
     return (
@@ -34,7 +34,7 @@ class RunDetails extends Component {
           </div>
           <div>
             <div>Spots Filled</div>
-            <div>{run.players.length} / {run.spots}</div>
+            <div>{run.players?.length} / {run.spots}</div>
           </div>
           <div>
             <div>Game Format</div>
@@ -56,16 +56,18 @@ class RunDetails extends Component {
                 <th></th>
               </tr>
             </thead>
-            {/* <tbody>
-              {run.players.forEach(player => {
-                <tr>
-                  <td>{player}</td>
-                  <td>{player}</td>
-                  <td>{player}</td>
-                  <td>{player}</td>
-                </tr>
+            <tbody>
+              {run.players?.map((player, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{player.name}</td>
+                    <td>{player?.level}</td>
+                    <td>{player?.position}</td>
+                  </tr>
+                )
               })}
-            </tbody> */}
+            </tbody>
           </table>
         </section>
         <section>
