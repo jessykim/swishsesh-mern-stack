@@ -13,6 +13,11 @@ class RunDetails extends Component {
   renderRun() {
     // console.log(this.props.run, 'PROPS')
     const run = this.props.run
+    console.log(run, 'RUN INFO')
+    const userId = this.props.auth.profile._id
+    console.log(userId, 'USER')
+    const found = run.players?.some(player => player._id === userId)
+    console.log(found, 'FOUND?')
 
     return (
       <div>
@@ -74,9 +79,15 @@ class RunDetails extends Component {
           <button>
             <Link to={'/runs'}>Back</Link>
           </button>
-          <button>
-            <Link to={`/runs/${run._id}/signup`}>Join Run</Link>
-          </button>
+          {(!found) ?
+            <button>
+              <Link to={`/runs/${run._id}/signup`}>Join Run</Link>
+            </button>
+            :
+            <button>
+              Remove Self
+            </button>
+          }
         </section>
       </div>
     )
@@ -91,9 +102,10 @@ class RunDetails extends Component {
   }
 }
 
-function mapStateToProps({run}) {
+function mapStateToProps({ run, auth }) {
   // console.log(run)
-  return { run }
+  console.log(auth, 'sTATE')
+  return { run, auth }
 }
 
 export default connect(mapStateToProps, { fetchRun })(RunDetails)
