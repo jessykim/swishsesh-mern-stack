@@ -85,7 +85,7 @@ class RunDetails extends Component {
             </button>
             :
             <button>
-              Remove Self
+              <Link to={`/runs/${run._id}/remove`}>Remove Self</Link>
             </button>
           }
         </section>
@@ -104,7 +104,7 @@ class RunDetails extends Component {
 
 function mapStateToProps({ run, auth }) {
   // console.log(run)
-  console.log(auth, 'sTATE')
+  console.log(auth, 'STATE')
   return { run, auth }
 }
 

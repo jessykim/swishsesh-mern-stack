@@ -94,4 +94,15 @@ module.exports = app => {
       }
     })
   })
+
+  app.delete('/api/runs/:runId/remove', requireLogin, async (req, res) => {
+    Run.findById(req.params.runId)
+    .then(run => {
+      run.players.remove(req.user.profile._id)
+      run.save()
+      .then(() => {
+        res.send(run)
+      })
+    })
+  })
 }

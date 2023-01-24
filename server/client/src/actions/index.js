@@ -26,6 +26,12 @@ export const signupRun = async (runId, history) => {
   history.push(`/runs/${runId}`);
 }
 
+export const removeRun = async (runId, history) => {
+  await axios.delete(`/api/runs/${runId}/remove`);
+
+  history.push(`/runs/${runId}`);
+}
+
 export const fetchRuns = () => async dispatch => {
   const res = await axios.get('/api/runs')
 
