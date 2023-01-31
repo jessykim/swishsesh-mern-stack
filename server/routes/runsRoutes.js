@@ -105,4 +105,15 @@ module.exports = app => {
       })
     })
   })
+
+  app.delete('/api/runs/:runId', requireLogin, async (req, res) => {
+    Run.findByIdAndDelete(req.params.runId)
+    // console.log(req.params.runId)
+    .then(() => {
+      // Run.find({})
+      // .then(runs => {
+      //   res.send(runs)
+      // })
+    })
+  })
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchRun } from '../../actions'
-import { Link } from 'react-router-dom'
+import { fetchRun, deleteRun } from '../../actions'
+import { Link, withRouter } from 'react-router-dom'
 
 class RunDetails extends Component {
   async componentDidMount() {
@@ -13,6 +13,8 @@ class RunDetails extends Component {
 
   renderRun() {
     console.log(this.props.user, 'USER')
+    const runId = this.props.match.params.runId
+    // console.log(this.props.match.params.runId, 'RUN ID')
 
     const run = this.props.run
     console.log(run, 'RUN INFO')
@@ -20,6 +22,9 @@ class RunDetails extends Component {
     // console.log(userId, 'USER')
     const found = run.players?.some(player => player._id === userId)
     // console.log(found, 'FOUND?')
+    
+    console.log(this.props.history, 'HISTORY')
+    const history = this.props.history
 
     return (
       <div>
@@ -52,7 +57,13 @@ class RunDetails extends Component {
             <div>{run.host?.name}</div>
           </div>
           <div>
-            {run.host?._id === userId ? <button>Delete</button> : <></>}
+            {run.host?._id === userId ? 
+              <button onClick={() => {deleteRun(runId);history.push('/runs')}}>
+                Delete
+              </button> 
+            : 
+              <></>
+            }
           </div>
         </section>
         <section>
@@ -112,4 +123,4 @@ function mapStateToProps(state) {
   return { run: state.run, user: state.auth }
 }
 
-export default connect(mapStateToProps, { fetchRun })(RunDetails)
+export default connect(mapStateToProps, { fetchRun })(withRouter(RunDetails))

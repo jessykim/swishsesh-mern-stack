@@ -42,13 +42,13 @@ const RunFormReview = ({ onCancel, formValues, submitRun, history }) => {
         <label>Spots</label>
         <div>{formValues['spots']}</div>
       </div>
-      {formValues['gameFormat'] ? 
+      {!formValues['gameFormat'] ? 
+        <></>
+      : 
         <div>
           <label>Game Format</label>
-          <div>formValues['gameFormat']</div> 
+          <div>{formValues['gameFormat']}</div> 
         </div>
-      : 
-        <></>
       }
       <button
         onClick={onCancel}
