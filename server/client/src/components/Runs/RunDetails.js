@@ -51,6 +51,9 @@ class RunDetails extends Component {
             <div>Host</div>
             <div>{run.host?.name}</div>
           </div>
+          <div>
+            {run.host?._id === userId ? <button>Delete</button> : <></>}
+          </div>
         </section>
         <section>
           <h2>Confirmed Players</h2>
