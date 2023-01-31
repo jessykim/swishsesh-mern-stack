@@ -10,4 +10,15 @@ module.exports = app => {
       res.send(profiles)
     })
   })
+
+  app.post('/api/profiles/:profileId', requireLogin, (req, res) => {
+    const { position, level } = req.body
+
+    console.log(req.body, 'REQ BODY')
+
+    Profile.findByIdAndUpdate(req.params.id, req.body, { position: position, level: level })
+    .then(profile => {
+      res.send(profile)
+    })
+  })
 }

@@ -1,23 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { fetchRun } from '../../actions'
+import { Link } from 'react-router-dom'
 
 class RunDetails extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     // console.log(this.props.match.params.runId, 'RUN ID')
+    // await this.props.fetchUser()
     const runId = this.props.match.params.runId
-    this.props.fetchRun(runId)
+    await this.props.fetchRun(runId)
   }
 
   renderRun() {
-    // console.log(this.props.run, 'PROPS')
+    console.log(this.props.user, 'USER')
+
     const run = this.props.run
     console.log(run, 'RUN INFO')
-    const userId = this.props.auth.profile._id
-    console.log(userId, 'USER')
+    const userId = this.props.user?.profile._id
+    // console.log(userId, 'USER')
     const found = run.players?.some(player => player._id === userId)
-    console.log(found, 'FOUND?')
+    // console.log(found, 'FOUND?')
 
     return (
       <div>
@@ -35,7 +37,7 @@ class RunDetails extends Component {
           </div>
           <div>
             <div>Cost (per person)</div>
-            <div>{run.cost}</div>
+            <div>${run.cost}</div>
           </div>
           <div>
             <div>Spots Filled</div>
@@ -102,10 +104,9 @@ class RunDetails extends Component {
   }
 }
 
-function mapStateToProps({ run, auth }) {
-  // console.log(run)
-  console.log(auth, 'STATE')
-  return { run, auth }
+function mapStateToProps(state) {
+  console.log(state, 'STATE')
+  return { run: state.run, user: state.auth }
 }
 
 export default connect(mapStateToProps, { fetchRun })(RunDetails)

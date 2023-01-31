@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Landing = ({ auth }) => {
-  console.log(auth)
+  // console.log(auth)
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>

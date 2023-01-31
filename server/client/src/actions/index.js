@@ -17,13 +17,17 @@ export const submitRun = (values, history) => async dispatch => {
   const res = await axios.post('/api/runs', values);
 
   history.push('/runs');
-  dispatch({ type: FETCH_USER, payload: res.data });
+  dispatch({ type: FETCH_RUN, payload: res.data });
 }
 
 export const signupRun = async (runId, history) => {
   await axios.post(`/api/runs/${runId}/signup`);
 
   history.push(`/runs/${runId}`);
+}
+
+export const updateProfile = async (profileId, values) => {
+  await axios.post(`/api/profiles/${profileId}`)
 }
 
 export const removeRun = async (runId, history) => {

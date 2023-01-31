@@ -28,11 +28,11 @@ class RunForm extends Component {
           </div>
           <div>
             <label htmlFor="cost">Cost (per person)</label>
-            <Field name="cost" component="input" type="number" />
+            <Field name="cost" component="input" type="number" min="0" />
           </div>
           <div>
             <label htmlFor="spots">Spots</label>
-            <Field name="spots" component="input" type="number" />
+            <Field name="spots" component="input" type="number" min="0" />
           </div>
           <div>
             <label htmlFor="gameFormat">Game Format</label>

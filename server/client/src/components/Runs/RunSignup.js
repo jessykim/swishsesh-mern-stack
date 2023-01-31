@@ -1,5 +1,6 @@
 // RunSignup shows users run info and option to signup
 import React, { Component } from 'react';
+// import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 // import * as actions from '../../actions';
@@ -16,9 +17,12 @@ class RunSignup extends Component {
   render() {
     const run = this.props.run
     const runId = this.props.match.params.runId
-    // console.log(this.props)
+    console.log(this.props)
     const history = this.props.history
     // console.log(history.location.pathname, 'HISTORY')
+    // const profileId = this.props.auth?.profile._id
+    // console.log(profileId, 'PRO ID')
+    
     return (
       <div>
         <h1>Join the Run</h1>
@@ -53,7 +57,23 @@ class RunSignup extends Component {
           </section>
         </section>
         <section>
-          <div>If you agree to pay the cost (per person) and would like to join the run, please click the button below!</div>
+          <h2>Continue to Sign Up!</h2>
+          <div>Player: {this.props.auth?.profile.name}</div>
+          {/* <form>
+            <div>
+              <label htmlFor="position">Position(s): </label>
+              <Field name="position" component="input" type="text" />
+            </div>
+            <div>
+              <label htmlFor="level">Highest level of basketball you've played: </label>
+              <Field name="level" component="select">
+                <option value="Recreational" default>Recreational</option>
+                <option value="Experienced">Experienced</option>
+                <option value="Competitive">Competitive</option>
+                <option value="Elite">Elite</option>
+              </Field>
+            </div>
+          </form> */}
         </section>
         <button>
           <Link to={`/runs/${runId}`}>
@@ -61,7 +81,7 @@ class RunSignup extends Component {
           </Link>
         </button>
         <button
-          onClick={() => signupRun(runId, history)}
+          onClick={() => {signupRun(runId, history)}}
         >
           Join Run
         </button>
@@ -70,9 +90,9 @@ class RunSignup extends Component {
   };
 };
 
-function mapStateToProps({ run }) {
-  console.log(run, "STATE")
-  return { run };
+function mapStateToProps({ run, auth }) {
+  console.log(auth, "STATE")
+  return { run, auth };
 }
 
 export default connect(mapStateToProps, { fetchRun })(withRouter(RunSignup))
