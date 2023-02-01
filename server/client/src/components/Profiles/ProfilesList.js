@@ -13,6 +13,10 @@ class ProfilesList extends Component {
       // console.log(profile)
       return (
         <div key={profile._id}>
+          <img 
+            src={profile.avatar} 
+            alt={`${profile.name}'s avatar`} 
+          />
           {profile.name}
         </div>
       );

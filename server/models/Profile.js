@@ -4,6 +4,7 @@ const { Schema } = mongoose
 
 const profileSchema = new Schema ({
   name: String,
+  avatar: String,
   position: String,
   level: {
     type: String,
