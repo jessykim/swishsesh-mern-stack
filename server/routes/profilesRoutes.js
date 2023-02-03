@@ -11,14 +11,21 @@ module.exports = app => {
     })
   })
 
-  app.post('/api/profiles/:profileId', requireLogin, (req, res) => {
-    const { position, level } = req.body
-
-    console.log(req.body, 'REQ BODY')
-
-    Profile.findByIdAndUpdate(req.params.id, req.body, { position: position, level: level })
+  app.get('/api/profiles/:profileId', requireLogin, (req, res) => {
+    Profile.findById(req.params.profileId)
     .then(profile => {
       res.send(profile)
     })
   })
+
+  // app.post('/api/profiles/:profileId', requireLogin, (req, res) => {
+  //   const { position, level } = req.body
+
+  //   console.log(req.body, 'REQ BODY')
+
+  //   Profile.findByIdAndUpdate(req.params.id, req.body, { position: position, level: level })
+  //   .then(profile => {
+  //     res.send(profile)
+  //   })
+  // })
 }

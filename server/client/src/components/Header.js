@@ -18,6 +18,7 @@ class Header extends Component {
         return (
           <>
             <li><a href="/profiles">Players</a></li>
+            <li><a href={`/profiles/${this.props.auth.profile._id}`}>My Profile</a></li>
             <li><a href="/runs/new">Add a Run</a></li>
             <li><a href="/runs">Join a Run</a></li>
             <li><a href="/api/logout">Logout</a></li>

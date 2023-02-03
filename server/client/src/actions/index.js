@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FETCH_USER, FETCH_PROFILES, FETCH_RUNS, FETCH_RUN, 
+import { FETCH_USER, FETCH_PROFILES, FETCH_RUNS, FETCH_RUN, FETCH_PROFILE
   // DELETE_RUN 
 } from './types'
 
@@ -13,6 +13,12 @@ export const fetchProfiles = () => async dispatch => {
   const res = await axios.get('/api/profiles')
   
   dispatch({ type: FETCH_PROFILES, payload: res.data })
+}
+
+export const fetchProfile = (profileId) => async dispatch => {
+  const res = await axios.get(`/api/profiles/${profileId}`)
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data })
 }
 
 export const submitRun = (values, history) => async dispatch => {
