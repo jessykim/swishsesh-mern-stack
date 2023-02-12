@@ -59,21 +59,6 @@ class RunSignup extends Component {
         <section>
           <h2>Continue to Sign Up!</h2>
           <div>Player: {this.props.auth?.profile.name}</div>
-          {/* <form>
-            <div>
-              <label htmlFor="position">Position(s): </label>
-              <Field name="position" component="input" type="text" />
-            </div>
-            <div>
-              <label htmlFor="level">Highest level of basketball you've played: </label>
-              <Field name="level" component="select">
-                <option value="Recreational" default>Recreational</option>
-                <option value="Experienced">Experienced</option>
-                <option value="Competitive">Competitive</option>
-                <option value="Elite">Elite</option>
-              </Field>
-            </div>
-          </form> */}
         </section>
         <button>
           <Link to={`/runs/${runId}`}>

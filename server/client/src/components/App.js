@@ -12,6 +12,7 @@ import RunDetails from './Runs/RunDetails'
 import RunSignup from './Runs/RunSignup'
 import RunRemove from './Runs/RunRemove'
 import ProfileDetails from './Profiles/ProfileDetails'
+import ProfileForm from './Profiles/ProfileForm'
 
 class App extends Component {
   componentDidMount() {
@@ -32,6 +33,7 @@ class App extends Component {
             <Route exact path="/runs/:runId/remove" component={RunRemove} />
             <Route exact path="/profiles" component={Profiles} />
             <Route exact path="/profiles/:profileId" component={ProfileDetails} />
+            <Route exact path="/profiles/:profileId/edit" component={ProfileForm} />
           </Switch>
         </BrowserRouter>
       </div>

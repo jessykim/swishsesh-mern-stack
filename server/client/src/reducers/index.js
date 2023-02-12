@@ -11,6 +11,7 @@ export default combineReducers({
   profile: profileReducer,
   profiles: profilesReducer,
   form: reduxForm,
+  // profileForm: reduxForm,
   runs: runsReducer,
   run: runReducer
 })

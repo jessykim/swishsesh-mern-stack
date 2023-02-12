@@ -65,6 +65,7 @@ const RunFormReview = ({ onCancel, formValues, submitRun, history }) => {
 };
 
 function mapStateToProps(state) {
+  console.log(state, 'RUNFORM REVIEW STATE')
   return { formValues: state.form.runForm.values };
 }
 

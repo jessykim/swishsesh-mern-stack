@@ -35,11 +35,11 @@ class ProfileDetails extends Component {
             <div>{profile.name}</div>
           </div>
           <div>
-            <div>Position</div>
+            <div>Position:</div>
             <div>{profile.position}</div>
           </div>
           <div>
-            <div>Level</div>
+            <div>Level:</div>
             <div>{profile.level}</div>
           </div>
         </section>
@@ -47,6 +47,9 @@ class ProfileDetails extends Component {
         <section>
           <button>
             <Link to={'/'}>Back</Link>
+          </button>
+          <button>
+            <Link to={`/profiles/${profile._id}/edit`}>Edit</Link>
           </button>
         </section>
       </div>

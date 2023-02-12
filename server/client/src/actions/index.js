@@ -28,6 +28,14 @@ export const submitRun = (values, history) => async dispatch => {
   dispatch({ type: FETCH_RUN, payload: res.data });
 }
 
+export const submitProfile = (profileId, values, history) => async dispatch => {
+  console.log(values, 'VALUES!')
+  const res = await axios.post(`/api/profiles/${profileId}`, values);
+
+  history.push(`/profiles/${profileId}`);
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+}
+
 export const signupRun = async (runId, history) => {
   await axios.post(`/api/runs/${runId}/signup`);
 
