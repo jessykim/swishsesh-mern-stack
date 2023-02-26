@@ -36,7 +36,7 @@ const RunFormReview = ({ onCancel, formValues, submitRun, history }) => {
       </div>
       <div>
         <label>Cost (per person)</label>
-        <div>{formValues['cost']}</div>
+        <div>${formValues['cost']}</div>
       </div>
       <div>
         <label>Spots</label>
