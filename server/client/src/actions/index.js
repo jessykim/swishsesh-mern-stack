@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { FETCH_USER, FETCH_PROFILES, FETCH_RUNS, FETCH_RUN, FETCH_PROFILE
-  // DELETE_RUN 
+import { FETCH_USER, FETCH_PROFILES, FETCH_RUNS, FETCH_RUN, FETCH_PROFILE, 
+  // UPDATE_PROFILE 
 } from './types'
 
 export const fetchUser = () => async dispatch => {
@@ -28,12 +28,16 @@ export const submitRun = (values, history) => async dispatch => {
   dispatch({ type: FETCH_RUN, payload: res.data });
 }
 
-export const submitProfile = (profileId, values, history) => async dispatch => {
-  console.log(values, 'VALUES!')
-  const res = await axios.post(`/api/profiles/${profileId}`, values);
+export const submitProfile = async (profileId, values, history) => 
+// async dispatch => 
+{
+  // console.log(values, 'VALUES!')
+  // const res = 
+  await axios.post(`/api/profiles/${profileId}`, values);
+  // console.log(res, 'THIS IS RES')
 
   history.push(`/profiles/${profileId}`);
-  dispatch({ type: FETCH_PROFILE, payload: res.data });
+  // dispatch({ type: FETCH_PROFILE, payload: res.data });
 }
 
 export const signupRun = async (runId, history) => {
@@ -41,10 +45,6 @@ export const signupRun = async (runId, history) => {
 
   history.push(`/runs/${runId}`);
 }
-
-// export const updateProfile = async (profileId, values) => {
-//   await axios.post(`/api/profiles/${profileId}`)
-// }
 
 export const removeRun = async (runId, history) => {
   await axios.delete(`/api/runs/${runId}/remove`);
@@ -64,14 +64,6 @@ export const fetchRun = (runId) => async dispatch => {
   dispatch({ type: FETCH_RUN, payload: res.data })
 }
 
-export const deleteRun = async (runId) => 
-// async dispatch =>
-{
-  // const res = 
+export const deleteRun = async (runId) => {
   await axios.delete(`/api/runs/${runId}`)
-  // console.log(history, 'HISTORY')
-  // const res = await axios.get(`/api/runs`)
-
-  // history.push('/runs');
-  // dispatch({ type: FETCH_RUNS, payload: res.data })
 }

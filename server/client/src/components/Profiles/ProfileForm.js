@@ -23,7 +23,7 @@ class ProfileForm extends Component {
     const history = this.props.history
     const formValues = this.props.formValues
     console.log(formValues, 'FORM VALUES')
-    // console.log(this.props, 'PROPS')
+    console.log(this.props.profile.level, 'PROPS')
     
     const hasValues = formValues?.hasOwnProperty('values')
     // console.log(hasValues, 'TRUE OR FALSE')
@@ -42,7 +42,7 @@ class ProfileForm extends Component {
       <div>
         <h1>Update Profile</h1>
         <form 
-        onSubmit={this.props.handleSubmit(submitProfile(profileId, values, history))}
+        onSubmit={this.props.handleSubmit(() => submitProfile(profileId, values, history))}
         >
           <div>
             <label htmlFor="position">Position(s): </label>

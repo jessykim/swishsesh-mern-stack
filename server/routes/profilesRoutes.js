@@ -21,31 +21,18 @@ module.exports = app => {
   app.post('/api/profiles/:profileId', requireLogin, async (req, res) => {
     const { position, level } = req.body
 
-    console.log(req.body, 'REQ BODY')
+    // console.log(req.body, 'REQ BODY')
 
     Profile.findByIdAndUpdate(req.params.profileId)
     .then(profile => {
-      console.log(profile.name, 'PROFILE')
+      // console.log(profile.name, 'PROFILE')
       profile.position = position,
       profile.level = level
       profile.save()
       .then(() => {
-        console.log(profile, 'SAVED PROFILE')
+        // console.log(profile, 'SAVED PROFILE')
         res.send(profile)
       })
     })
-
-    // try {
-    //   await Profile.findByIdAndUpdate(req.params.id
-    //     // , req.body, { position: position, level: level }
-    //   )
-    //   .then(profile => {
-    //     console.log(profile, 'PROFILE')
-    //     res.send(profile)
-    //   })
-    // } catch (err) {
-    //   res.status(422).send(err)
-    // }
-
   })
 }
