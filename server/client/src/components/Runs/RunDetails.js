@@ -12,7 +12,7 @@ class RunDetails extends Component {
   }
 
   renderRun() {
-    console.log(this.props.user, 'USER')
+    // console.log(this.props.user, 'USER')
     const runId = this.props.match.params.runId
     // console.log(this.props.match.params.runId, 'RUN ID')
 
@@ -22,8 +22,15 @@ class RunDetails extends Component {
     // console.log(userId, 'USER')
     const found = run.players?.some(player => player._id === userId)
     // console.log(found, 'FOUND?')
+
+    // const startDate = run.start
+    // const endDate = run.end
+    // const sameDate = startDate.toDateString() === endDate.toDateString()
+
+    // console.log(startDate, 'START DATE')
+    // console.log(sameDate, 'SAME DATE?')
     
-    console.log(this.props.history, 'HISTORY')
+    // console.log(this.props.history, 'HISTORY')
     const history = this.props.history
 
     return (
@@ -37,6 +44,15 @@ class RunDetails extends Component {
           </div>
           <div>
             <div>Game Time</div>
+            {
+            // sameDate ?
+            // `${sameDate}`
+            // :
+            // `${endDate}`
+              // `${startDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} - ${startDate.toLocaleDateString([], { hour: 'numeric', minute: 'numeric' })} to ${endDate.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric' })}` 
+              // : 
+              // `${startDate.toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })}`
+            }
             <div>{run.start}</div>
             <div>{run.end}</div>
           </div>
