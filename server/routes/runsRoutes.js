@@ -30,11 +30,6 @@ module.exports = app => {
     .populate('host')
     .populate('players')
     .then(run => {
-      // const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
-      // const timeOptions = { hour: 'numeric', minute: 'numeric' };
-      // const newStart = run.start.toLocaleDateString('en-US', dateOptions) + ' at ' + run.start.toLocaleTimeString('en-US', timeOptions);
-      // const newEnd = run.end.toLocaleDateString('en-US', dateOptions) + ' at ' + run.end.toLocaleTimeString('en-US', timeOptions);
-
       const options = {
         weekday: 'long',
         month: 'long',
@@ -45,13 +40,6 @@ module.exports = app => {
       };
       const newStart = new Intl.DateTimeFormat('en-US', options).format(run.start);
       const newEnd = new Intl.DateTimeFormat('en-US', options).format(run.end);
-
-      // console.log(run.start, "THIS RUN")
-      // const newStart = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short' }).format(run.start)
-      // console.log(newStart)
-      // const newEnd = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short' }).format(run.end)
-      // console.log(newEnd)
-      // console.log(run)
 
       const updatedRun = {
         _id: run._id,

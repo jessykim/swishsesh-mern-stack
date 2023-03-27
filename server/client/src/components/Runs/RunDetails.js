@@ -23,12 +23,21 @@ class RunDetails extends Component {
     const found = run.players?.some(player => player._id === userId)
     // console.log(found, 'FOUND?')
 
-    // const startDate = run.start
-    // const endDate = run.end
-    // const sameDate = startDate.toDateString() === endDate.toDateString()
+    const startDate = run.start
+    const endDate = run.end
+    
+    const new_start_str = startDate.split(' ')
+    const new_start = new_start_str.slice(0, 3)
+    const new_end_str = endDate.split(' ')
+    const new_end = new_end_str.slice(0, 3)
 
-    // console.log(startDate, 'START DATE')
-    // console.log(sameDate, 'SAME DATE?')
+    const endTimeOnly = new_end_str.slice(4).join(" ")
+    
+    console.log(new_start, 'START DATE')
+    console.log(new_end, 'END DATE')
+    
+    let sameDate = JSON.stringify(new_start) === JSON.stringify(new_end)
+    console.log(sameDate, 'SAME DATE?')
     
     // console.log(this.props.history, 'HISTORY')
     const history = this.props.history
@@ -44,17 +53,11 @@ class RunDetails extends Component {
           </div>
           <div>
             <div>Game Time</div>
-            {
-            // sameDate ?
-            // `${sameDate}`
-            // :
-            // `${endDate}`
-              // `${startDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} - ${startDate.toLocaleDateString([], { hour: 'numeric', minute: 'numeric' })} to ${endDate.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric' })}` 
-              // : 
-              // `${startDate.toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })}`
+            {sameDate ?
+              `${startDate} - ${endTimeOnly}`
+              :
+              `${startDate} - ${endDate}`
             }
-            <div>{run.start}</div>
-            <div>{run.end}</div>
           </div>
           <div>
             <div>Cost (per person)</div>
