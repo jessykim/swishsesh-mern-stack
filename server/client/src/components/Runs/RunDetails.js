@@ -25,18 +25,20 @@ class RunDetails extends Component {
 
     const startDate = run.start
     const endDate = run.end
-    
-    const new_start_str = startDate.split(' ')
-    const new_start = new_start_str.slice(0, 3)
-    const new_end_str = endDate.split(' ')
-    const new_end = new_end_str.slice(0, 3)
 
-    const endTimeOnly = new_end_str.slice(4).join(" ")
+    console.log(this.props.run, 'START DATE')
     
-    console.log(new_start, 'START DATE')
-    console.log(new_end, 'END DATE')
+    const newStartStr = startDate?.split(' ')
+    const newStart = newStartStr?.slice(0, 3)
+    const newEndStr = endDate?.split(' ')
+    const newEnd = newEndStr?.slice(0, 3)
+
+    const endTimeOnly = newEndStr?.slice(4).join(' ')
     
-    let sameDate = JSON.stringify(new_start) === JSON.stringify(new_end)
+    console.log(newStart, 'START DATE')
+    console.log(newEnd, 'END DATE')
+    
+    let sameDate = JSON.stringify(newStart) === JSON.stringify(newEnd)
     console.log(sameDate, 'SAME DATE?')
     
     // console.log(this.props.history, 'HISTORY')
@@ -138,7 +140,7 @@ class RunDetails extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state, 'STATE')
+  console.log(state.run, 'STATE')
   return { run: state.run, user: state.auth }
 }
 

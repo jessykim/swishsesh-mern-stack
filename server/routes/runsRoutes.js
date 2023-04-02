@@ -38,6 +38,7 @@ module.exports = app => {
         minute: 'numeric',
         hour12: true,
       };
+
       const newStart = new Intl.DateTimeFormat('en-US', options).format(run.start);
       const newEnd = new Intl.DateTimeFormat('en-US', options).format(run.end);
 
